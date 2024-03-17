@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password</title>
+    <style>
+        *{
+            margin: 20px;
+            padding: 3px;
+            background: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="input">
+        <input type="text" id="input">
+        <button onclick="generate()">
+            create
+        </button>
+    </div>
+    <script>
+        const pass = document.getElementById("input")
+        const length = 12;
+
+        const upperCase = 'WQERTYUIOAZFDXSCGV';
+        const lowerCase = 'wqertuyiopasdfghjklzxcvbnm';
+        const number = '0123456789';
+
+        let allchars = upperCase + lowerCase + number;
+        function generate(){
+            let password = '';
+            password += upperCase[Math.floor(Math.random() * upperCase.length)];
+            password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
+            password += number[Math.floor(Math.random() * number.length)];
+
+            while(length > password.length){
+                password +=  allchars[Math.floor(Math.random() * allchars.length)]
+            }
+            pass.value = password;
+        }
+    </script>
+</body>
+</html>
